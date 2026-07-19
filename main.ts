@@ -5,17 +5,29 @@ input.onPinPressed(TouchPin.P0, function () {
         led.unplot(X, Y)
     }
 })
+function LIGHTFORSHORT () {
+    if (led.pointBrightness(X, Y) == 0) {
+        led.plot(X, Y)
+        basic.pause(100)
+        led.unplot(X, Y)
+    }
+}
 input.onButtonPressed(Button.A, function () {
     if (X == 0) {
         X = 1
+        LIGHTFORSHORT()
     } else if (X == 1) {
         X = 2
+        LIGHTFORSHORT()
     } else if (X == 2) {
         X = 3
+        LIGHTFORSHORT()
     } else if (X == 3) {
         X = 4
+        LIGHTFORSHORT()
     } else if (X == 4) {
         X = 0
+        LIGHTFORSHORT()
     }
 })
 input.onPinPressed(TouchPin.P2, function () {
@@ -78,14 +90,19 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     if (Y == 0) {
         Y = 1
+        LIGHTFORSHORT()
     } else if (Y == 1) {
         Y = 2
+        LIGHTFORSHORT()
     } else if (Y == 2) {
         Y = 3
+        LIGHTFORSHORT()
     } else if (Y == 3) {
         Y = 4
+        LIGHTFORSHORT()
     } else if (Y == 4) {
         Y = 0
+        LIGHTFORSHORT()
     }
 })
 input.onPinPressed(TouchPin.P1, function () {
