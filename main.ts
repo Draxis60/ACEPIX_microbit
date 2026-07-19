@@ -10,6 +10,10 @@ function LIGHTFORSHORT () {
         led.plot(X, Y)
         basic.pause(100)
         led.unplot(X, Y)
+    } else {
+        led.unplot(X, Y)
+        basic.pause(100)
+        led.plot(X, Y)
     }
 }
 input.onButtonPressed(Button.A, function () {
