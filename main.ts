@@ -1,5 +1,9 @@
 input.onPinPressed(TouchPin.P0, function () {
-    led.plotBrightness(X, Y, 255)
+    if (led.pointBrightness(X, Y) == 0) {
+        led.plotBrightness(X, Y, 255)
+    } else {
+        led.unplot(X, Y)
+    }
 })
 input.onButtonPressed(Button.A, function () {
     if (X == 0) {
@@ -15,7 +19,11 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 input.onPinPressed(TouchPin.P2, function () {
-    led.plotBrightness(X, Y, 50)
+    if (led.pointBrightness(X, Y) == 0) {
+        led.plotBrightness(X, Y, 50)
+    } else {
+        led.unplot(X, Y)
+    }
 })
 input.onButtonPressed(Button.AB, function () {
     if (input.logoIsPressed()) {
@@ -81,7 +89,11 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onPinPressed(TouchPin.P1, function () {
-    led.plotBrightness(X, Y, 150)
+    if (led.pointBrightness(X, Y) == 0) {
+        led.plotBrightness(X, Y, 150)
+    } else {
+        led.unplot(X, Y)
+    }
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     if (led.pointBrightness(X, Y) == 0) {
