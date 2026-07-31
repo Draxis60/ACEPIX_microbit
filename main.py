@@ -1,232 +1,246 @@
-/**
- * different brightness values
- */
-/**
- * paints the selected pixel
- */
-/**
- * clears the screen
- */
-input.onPinPressed(TouchPin.P0, function () {
-    if (led.pointBrightness(X, Y) == 0) {
-        led.plotBrightness(X, Y, 201)
-    } else {
+"""
+
+different brightness values
+
+"""
+"""
+
+paints the selected pixel
+
+"""
+"""
+
+clears the screen
+
+"""
+
+def on_pin_pressed_p0():
+    if led.point_brightness(X, Y) == 0:
+        led.plot_brightness(X, Y, 201)
+    else:
         led.unplot(X, Y)
-    }
-})
-/**
- * makes it so that it lights up for a short amount of time
- */
-function LIGHTFORSHORT () {
-    if (led.pointBrightness(X, Y) == 0) {
+input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
+
+"""
+
+makes it so that it lights up for a short amount of time
+
+"""
+def LIGHTFORSHORT():
+    if led.point_brightness(X, Y) == 0:
         led.plot(X, Y)
         basic.pause(100)
         led.unplot(X, Y)
-    } else {
+    else:
         led.unplot(X, Y)
         basic.pause(100)
         led.plot(X, Y)
-    }
-}
-/**
- * moves the "cursor" on the x and y axis (yes i know the microturtle could acomplish this more easily)
- */
-input.onButtonPressed(Button.A, function () {
-    if (X == 0) {
+"""
+
+moves the "cursor" on the x and y axis (yes i know the microturtle could acomplish this more easily)
+
+"""
+
+def on_button_pressed_a():
+    global X
+    if X == 0:
         X = 1
         LIGHTFORSHORT()
-    } else if (X == 1) {
+    elif X == 1:
         X = 2
         LIGHTFORSHORT()
-    } else if (X == 2) {
+    elif X == 2:
         X = 3
         LIGHTFORSHORT()
-    } else if (X == 3) {
+    elif X == 3:
         X = 4
         LIGHTFORSHORT()
-    } else if (X == 4) {
+    elif X == 4:
         X = 0
         LIGHTFORSHORT()
-    }
-})
-input.onPinPressed(TouchPin.P2, function () {
-    if (led.pointBrightness(X, Y) == 0) {
-        led.plotBrightness(X, Y, 50)
-    } else {
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_pin_pressed_p2():
+    if led.point_brightness(X, Y) == 0:
+        led.plot_brightness(X, Y, 50)
+    else:
         led.unplot(X, Y)
-    }
-})
-input.onButtonPressed(Button.AB, function () {
-    if (input.logoIsPressed()) {
-        basic.showLeds(`
+input.on_pin_pressed(TouchPin.P2, on_pin_pressed_p2)
+
+def on_button_pressed_ab():
+    if input.logo_is_pressed():
+        basic.show_leds("""
             . # # # .
             # . # . #
             # # # # #
             . # # # .
             . # # # .
-            `)
+            """)
         basic.pause(500)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             # . # . #
             # # # # #
             . # # # .
             . # # # .
-            `)
+            """)
         basic.pause(100)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . . . . .
             # # # # #
             . # # # .
             . # # # .
-            `)
-        basic.showLeds(`
+            """)
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . . . .
             . # # # .
             . # # # .
-            `)
+            """)
         basic.pause(100)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . . . .
             . . . . .
             . # # # .
-            `)
+            """)
         basic.pause(100)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . . . .
             . . . . .
-            . . . . .
-            `)
-    }
-})
-input.onButtonPressed(Button.B, function () {
-    if (Y == 0) {
+            . # # # .
+            """)
+input.on_button_pressed(Button.AB, on_button_pressed_ab)
+
+def on_button_pressed_b():
+    global Y
+    if Y == 0:
         Y = 1
         LIGHTFORSHORT()
-    } else if (Y == 1) {
+    elif Y == 1:
         Y = 2
         LIGHTFORSHORT()
-    } else if (Y == 2) {
+    elif Y == 2:
         Y = 3
         LIGHTFORSHORT()
-    } else if (Y == 3) {
+    elif Y == 3:
         Y = 4
         LIGHTFORSHORT()
-    } else if (Y == 4) {
+    elif Y == 4:
         Y = 0
         LIGHTFORSHORT()
-    }
-})
-input.onPinPressed(TouchPin.P1, function () {
-    if (led.pointBrightness(X, Y) == 0) {
-        led.plotBrightness(X, Y, 122)
-    } else {
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+def on_pin_pressed_p1():
+    if led.point_brightness(X, Y) == 0:
+        led.plot_brightness(X, Y, 122)
+    else:
         led.unplot(X, Y)
-    }
-})
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    if (led.pointBrightness(X, Y) == 0) {
+input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
+
+def on_logo_pressed():
+    if led.point_brightness(X, Y) == 0:
         led.plot(X, Y)
-    } else {
+    else:
         led.unplot(X, Y)
-    }
-})
-/**
- * sets variables and does the startup animation
- */
-let Y = 0
-let X = 0
+input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)
+
+"""
+
+sets variables and does the startup animation
+
+"""
+Y = 0
+X = 0
 X = 0
 Y = 0
-basic.showString("ACEPIX")
-basic.showLeds(`
+basic.show_string("ACEPIX")
+basic.show_leds("""
     . . . . .
     . # . . .
     . . . . .
     . . . . .
     . . . . .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     . . . . .
     . . . . .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . .
     . . . . .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . .
     . # . . .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . .
     . # # . .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . .
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . #
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . . .
     . . . . .
     # . . . #
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . #
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . #
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . # . # .
     . . . . .
     # . . . #
     . # # # .
-    `)
-basic.showLeds(`
+    """)
+basic.show_leds("""
     . . . . .
     . . . . .
     . . . . .
     . . . . .
     . . . . .
-    `)
+    """)
